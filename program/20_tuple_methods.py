@@ -1,0 +1,12 @@
+t = (5, 3, 8, 6, 3)
+print("Tuple:", t)
+print("Length:", len(t))
+print("Count of 3:", t.count(3))
+print("Index of 8:", t.index(8))
+print("Sorted:", sorted(t))
+print("Min:", min(t))
+print("Max:", max(t))
+
+t2 = (5, 3, 8)
+print("Comparison with (5, 3, 8):", t == t2)
+print("Reversed:", tuple(reversed(t)))
