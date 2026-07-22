@@ -1,6 +1,6 @@
 # Python Programs
 
-This repository contains Python programs for the assignment given by Yash Sir.
+**Python Programs for the Assignment Given by Yash Sir**
 
 ## 📄 Assignment PDF
 
