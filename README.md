@@ -1,6 +1,6 @@
 # Python Programs
 
-**Python Programs for the Assignment Given by Yash Sir**
+**Assignment of Python Programs**
 
 ## 📄 Assignment PDF
 
