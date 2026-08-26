@@ -76,7 +76,7 @@ def submit_form():
     phone =phone_entry.get()
     address =address_entry.get()
     age = age_entry.get()
-    gender =gender_entry.get()
+    gender =gender_var.get()
     department= department_entry.get()
     designation =designation_entry.get()
     salary =salary_entry.get()
