@@ -36,8 +36,18 @@ age_entry.grid(row=5, column=1, padx=10, pady=10)
 
 gender_label = tk.Label(root, text="Gender")
 gender_label.grid(row=6, column=0, padx=10, pady=10)
-gender_entry = tk.Entry(root)
-gender_entry.grid(row=6, column=1, padx=10, pady=10)
+
+gender_var = tk.StringVar()
+gender_var.set("Select Gender")
+
+gender_dropdown = tk.OptionMenu(
+    root,
+    gender_var,
+    "Male",
+    "Female",
+    "Other"
+)
+gender_dropdown.grid(row=6,column=1,padx=10,pady=10)
 
 department_label = tk.Label(root, text="Department")
 department_label.grid(row=7, column=0, padx=10, pady=10)
