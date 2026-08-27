@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+from tkcalendar import DateEntry
 
 root = tk.Tk()
 root.title("EMPLOYEE")
@@ -66,7 +67,7 @@ salary_entry.grid(row=9, column=1, padx=10, pady=10)
 
 joining_date_label = tk.Label(root, text="Joining Date")
 joining_date_label.grid(row=10, column=0, padx=10, pady=10)
-joining_date_entry = tk.Entry(root)
+joining_date_entry = DateEntry(root , width=12, date_pattern= 'yyyy-mm-dd')
 joining_date_entry.grid(row=10, column=1, padx=10, pady=10)
 
 
