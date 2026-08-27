@@ -3,7 +3,7 @@ from tkinter import messagebox
 
 root = tk.Tk()
 root.title("EMPLOYEE")
-root.geometry("700x500")
+root.geometry("700x650")
 
 title_lable= tk.Label(root, text="Employee Detail Form" , font="ar 15 bold" ,bg="lightblue")
 title_lable.grid(row=0,column=0,columnspan=2,padx=10,pady=10)
@@ -26,7 +26,7 @@ phone_entry.grid(row=3, column=1, padx=10, pady=10)
 
 address_label = tk.Label(root, text="Address")
 address_label.grid(row=4, column=0, padx=10, pady=10)
-address_entry = tk.Entry(root)
+address_entry = tk.Text(root , width=15, height=3)
 address_entry.grid(row=4, column=1, padx=10, pady=10)
 
 age_label = tk.Label(root, text="Age")
@@ -74,7 +74,7 @@ def submit_form():
     name =name_entry.get()
     email =email_entry.get()
     phone =phone_entry.get()
-    address =address_entry.get()
+    address =address_entry.get("1.0",tk.END).strip()
     age = age_entry.get()
     gender =gender_var.get()
     department= department_entry.get()
