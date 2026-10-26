@@ -1,4 +1,3 @@
-
 import tkinter as tk
 from tkinter import messagebox
 
@@ -8,7 +7,6 @@ root.geometry("450x450")
 
 students = {}
 
-# Input Fields
 tk.Label(root, text="Student ID").pack()
 id_entry = tk.Entry(root)
 id_entry.pack()
@@ -22,7 +20,6 @@ city_entry = tk.Entry(root)
 city_entry.pack()
 
 
-# INSERT
 def insert_data():
     sid = id_entry.get()
 
@@ -35,7 +32,6 @@ def insert_data():
         messagebox.showinfo("Success", "Record Inserted")
 
 
-# DISPLAY
 def display_data():
     result.delete("1.0", tk.END)
 
@@ -43,7 +39,6 @@ def display_data():
         result.insert(tk.END, f"{sid}  {data[0]}  {data[1]}\n")
 
 
-# UPDATE
 def update_data():
     sid = id_entry.get()
 
@@ -54,7 +49,6 @@ def update_data():
         messagebox.showerror("Error", "Student Not Found")
 
 
-# DELETE
 def delete_data():
     sid = id_entry.get()
 
@@ -65,17 +59,14 @@ def delete_data():
         messagebox.showerror("Error", "Student Not Found")
 
 
-# Buttons
 tk.Button(root, text="Insert", width=10, command=insert_data).pack(pady=3)
 tk.Button(root, text="Display", width=10, command=display_data).pack(pady=3)
 tk.Button(root, text="Update", width=10, command=update_data).pack(pady=3)
 tk.Button(root, text="Delete", width=10, command=delete_data).pack(pady=3)
 
-# Display Area
 tk.Label(root, text="Student Records").pack(pady=5)
 
 result = tk.Text(root, height=8, width=45)
 result.pack()
 
 root.mainloop()
-
