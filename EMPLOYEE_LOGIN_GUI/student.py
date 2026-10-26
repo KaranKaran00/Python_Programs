@@ -1,37 +1,81 @@
-from tkinter import *
 
-def submit():
-    name = fname.get() + " " + lname.get()
-    gender = "Male" if g.get() == 1 else "Female"
-    subjects = [lb.get(i) for i in lb.curselection()]
-    out.config(text=f"Name: {name}\nGender: {gender}\nSubjects: {subjects}")
+import tkinter as tk
+from tkinter import messagebox
 
-root = Tk()
-root.title("Student Form")
-root.geometry("300x400")
+root = tk.Tk()
+root.title("Student CRUD")
+root.geometry("450x450")
 
-Label(root, text="First Name").pack()
-fname = Entry(root)
-fname.pack()
+students = {}
 
-Label(root, text="Last Name").pack()
-lname = Entry(root)
-lname.pack()
+# Input Fields
+tk.Label(root, text="Student ID").pack()
+id_entry = tk.Entry(root)
+id_entry.pack()
 
-g = IntVar(value=1)
-Radiobutton(root, text="Male", variable=g, value=1).pack()
-Radiobutton(root, text="Female", variable=g, value=2).pack()
+tk.Label(root, text="Student Name").pack()
+name_entry = tk.Entry(root)
+name_entry.pack()
 
-Label(root, text="Select Subjects").pack()
-lb = Listbox(root, selectmode=MULTIPLE, height=3)
-lb.pack()
+tk.Label(root, text="City").pack()
+city_entry = tk.Entry(root)
+city_entry.pack()
 
-for s in ["Python", "J2EE", "CS"]:
-    lb.insert(END, s)
 
-Button(root, text="Submit", command=submit, bg="green", fg="white").pack(pady=10)
+# INSERT
+def insert_data():
+    sid = id_entry.get()
 
-out = Label(root, text="")
-out.pack()
+    if sid == "" or name_entry.get() == "" or city_entry.get() == "":
+        messagebox.showerror("Error", "Fill all fields")
+    elif sid in students:
+        messagebox.showerror("Error", "ID already exists")
+    else:
+        students[sid] = (name_entry.get(), city_entry.get())
+        messagebox.showinfo("Success", "Record Inserted")
+
+
+# DISPLAY
+def display_data():
+    result.delete("1.0", tk.END)
+
+    for sid, data in students.items():
+        result.insert(tk.END, f"{sid}  {data[0]}  {data[1]}\n")
+
+
+# UPDATE
+def update_data():
+    sid = id_entry.get()
+
+    if sid in students:
+        students[sid] = (name_entry.get(), city_entry.get())
+        messagebox.showinfo("Success", "Record Updated")
+    else:
+        messagebox.showerror("Error", "Student Not Found")
+
+
+# DELETE
+def delete_data():
+    sid = id_entry.get()
+
+    if sid in students:
+        del students[sid]
+        messagebox.showinfo("Success", "Record Deleted")
+    else:
+        messagebox.showerror("Error", "Student Not Found")
+
+
+# Buttons
+tk.Button(root, text="Insert", width=10, command=insert_data).pack(pady=3)
+tk.Button(root, text="Display", width=10, command=display_data).pack(pady=3)
+tk.Button(root, text="Update", width=10, command=update_data).pack(pady=3)
+tk.Button(root, text="Delete", width=10, command=delete_data).pack(pady=3)
+
+# Display Area
+tk.Label(root, text="Student Records").pack(pady=5)
+
+result = tk.Text(root, height=8, width=45)
+result.pack()
 
 root.mainloop()
+
